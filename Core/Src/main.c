@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include <stdbool.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -105,16 +106,17 @@ int main(void)
   while (1)
   {
     HAL_GPIO_TogglePin(LD2_GPIO_Port,LD2_Pin);
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_6);
     
-    
-    //HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_8);
-    //HAL_Delay(100);
 
-    uint8_t TX_Buffer [] = {0b01101001}; 
-    uint8_t TX_Buffer2 [] = {0b0000};
-    HAL_SPI_Transmit(&hspi1, TX_Buffer, 1,1000); 
-    HAL_SPI_Transmit(&hspi1, TX_Buffer2, 1,1000); 
-    //HAL_Delay(50);
+    uint8_t TX_Buffer  = 0b10001000; 
+    uint8_t TX_Buffer2 = ~TX_Buffer; 
+    HAL_SPI_Transmit(&hspi1, &TX_Buffer, 1,1000); 
+    HAL_SPI_Transmit(&hspi1, &TX_Buffer2, 1,1000); 
+    HAL_Delay(1000);
+
+    
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_6);
 
     /* USER CODE END WHILE */
 
@@ -187,9 +189,9 @@ static void MX_SPI1_Init(void)
   hspi1.Instance = SPI1;
   hspi1.Init.Mode = SPI_MODE_MASTER;
   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi1.Init.DataSize = SPI_DATASIZE_16BIT;
-  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_HIGH;
+  hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
@@ -197,7 +199,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
   hspi1.Init.CRCPolynomial = 7;
   hspi1.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
-  hspi1.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  hspi1.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
   if (HAL_SPI_Init(&hspi1) != HAL_OK)
   {
     Error_Handler();
