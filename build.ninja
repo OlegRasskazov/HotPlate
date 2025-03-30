@@ -53,7 +53,7 @@ build CMakeFiles/HotPlate.dir/Core/Src/main.c.obj: C_COMPILER__HotPlate_unscanne
   DEFINES = -DDEBUG -DSTM32F091xC -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\HotPlate.dir\Core\Src\main.c.obj.d
   FLAGS = -mcpu=cortex-m0  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11
-  INCLUDES = -IC:/repos/STM32/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Device/ST/STM32F0xx/Include -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Include
+  INCLUDES = -IC:/repos/STM32/HotPlate/HotPlate/Core/Src -IC:/repos/STM32/HotPlate/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Device/ST/STM32F0xx/Include -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\HotPlate.dir
   OBJECT_FILE_DIR = CMakeFiles\HotPlate.dir\Core\Src
 
@@ -61,7 +61,7 @@ build CMakeFiles/HotPlate.dir/Core/Src/stm32f0xx_it.c.obj: C_COMPILER__HotPlate_
   DEFINES = -DDEBUG -DSTM32F091xC -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\HotPlate.dir\Core\Src\stm32f0xx_it.c.obj.d
   FLAGS = -mcpu=cortex-m0  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11
-  INCLUDES = -IC:/repos/STM32/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Device/ST/STM32F0xx/Include -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Include
+  INCLUDES = -IC:/repos/STM32/HotPlate/HotPlate/Core/Src -IC:/repos/STM32/HotPlate/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Device/ST/STM32F0xx/Include -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\HotPlate.dir
   OBJECT_FILE_DIR = CMakeFiles\HotPlate.dir\Core\Src
 
@@ -69,7 +69,7 @@ build CMakeFiles/HotPlate.dir/Core/Src/stm32f0xx_hal_msp.c.obj: C_COMPILER__HotP
   DEFINES = -DDEBUG -DSTM32F091xC -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\HotPlate.dir\Core\Src\stm32f0xx_hal_msp.c.obj.d
   FLAGS = -mcpu=cortex-m0  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11
-  INCLUDES = -IC:/repos/STM32/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Device/ST/STM32F0xx/Include -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Include
+  INCLUDES = -IC:/repos/STM32/HotPlate/HotPlate/Core/Src -IC:/repos/STM32/HotPlate/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Device/ST/STM32F0xx/Include -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\HotPlate.dir
   OBJECT_FILE_DIR = CMakeFiles\HotPlate.dir\Core\Src
 
@@ -77,7 +77,7 @@ build CMakeFiles/HotPlate.dir/Core/Src/sysmem.c.obj: C_COMPILER__HotPlate_unscan
   DEFINES = -DDEBUG -DSTM32F091xC -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\HotPlate.dir\Core\Src\sysmem.c.obj.d
   FLAGS = -mcpu=cortex-m0  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11
-  INCLUDES = -IC:/repos/STM32/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Device/ST/STM32F0xx/Include -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Include
+  INCLUDES = -IC:/repos/STM32/HotPlate/HotPlate/Core/Src -IC:/repos/STM32/HotPlate/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Device/ST/STM32F0xx/Include -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\HotPlate.dir
   OBJECT_FILE_DIR = CMakeFiles\HotPlate.dir\Core\Src
 
@@ -85,7 +85,7 @@ build CMakeFiles/HotPlate.dir/Core/Src/syscalls.c.obj: C_COMPILER__HotPlate_unsc
   DEFINES = -DDEBUG -DSTM32F091xC -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\HotPlate.dir\Core\Src\syscalls.c.obj.d
   FLAGS = -mcpu=cortex-m0  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11
-  INCLUDES = -IC:/repos/STM32/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Device/ST/STM32F0xx/Include -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Include
+  INCLUDES = -IC:/repos/STM32/HotPlate/HotPlate/Core/Src -IC:/repos/STM32/HotPlate/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Device/ST/STM32F0xx/Include -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\HotPlate.dir
   OBJECT_FILE_DIR = CMakeFiles\HotPlate.dir\Core\Src
 
@@ -93,7 +93,7 @@ build CMakeFiles/HotPlate.dir/startup_stm32f091xc.s.obj: ASM_COMPILER__HotPlate_
   DEFINES = -DDEBUG -DSTM32F091xC -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\HotPlate.dir\startup_stm32f091xc.s.obj.d
   FLAGS = -mcpu=cortex-m0  -x assembler-with-cpp -MMD -MP -g
-  INCLUDES = -IC:/repos/STM32/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Device/ST/STM32F0xx/Include -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Include
+  INCLUDES = -IC:/repos/STM32/HotPlate/HotPlate/Core/Src -IC:/repos/STM32/HotPlate/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Core/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc -IC:/repos/STM32/HotPlate/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Device/ST/STM32F0xx/Include -IC:/repos/STM32/HotPlate/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\HotPlate.dir
   OBJECT_FILE_DIR = CMakeFiles\HotPlate.dir
 

@@ -18,7 +18,10 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "spi.c"
+#include "AD7794.c"
 #include <stdbool.h>
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -41,7 +44,6 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-SPI_HandleTypeDef hspi1;
 DMA_HandleTypeDef hdma_spi1_rx;
 
 UART_HandleTypeDef huart2;
@@ -54,7 +56,6 @@ UART_HandleTypeDef huart2;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
-static void MX_SPI1_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
@@ -103,29 +104,48 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  bool configured = false;  
   while (1)
   {
+    HAL_Delay(1000);
+    if (!configured)
+    {
+      SetMode(Mode_MD_SCM | Mode_AMPCM | Mode_Chop_DIS |  Mode_Rate_242Hz_8ms);
+      SetConfiguration(Conf_UB | Conf_G64 | Conf_Buf | Conf_Ch_TempSensor);
+      configured = true;
+    }
+    ReadMode();
+    ReadConfiguration();
+    while (1)
+    {
+      ReadData();
+      HAL_Delay(1000);
+    }
+    
+    
+    //CheckStatusReady();
+    
     HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
     // HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_6);
+    HAL_Delay(1000);
+    // ReadMode();
+    // ReadConfiguration();
+    // ReadStatus();
+    // ReadMode();
+
+
 
     // uint8_t RX_Buffer;
     // uint8_t TX_Buffer  = 0x48;
     // uint16_t conf = 0x1010;
-    uint16_t conf = 0b000101100001000;
-    uint16_t mode = 0x0101;
-    Write_16bit(Mode_Reg, mode);
-    Write_16bit(Conf_Reg, conf);
+    // uint16_t conf = 0b000101100001000;
+    // uint16_t mode = 0x0101;
+    // Write_16bit(Mode_Reg, mode);
+    // Write_16bit(Conf_Reg, conf);
 
     // uint16_t data = Read_16bit(Mode_Reg);
     // uint16_t data2 = Read_16bit(Conf_Reg);
-    uint16_t data23 = Read_8bit(Stat_Reg);
-
-    // HAL_SPI_Transmit(&hspi1, &TX_Buffer, 1, 1000);
-
-    // HAL_Delay(1000);
-
-    // HAL_SPI_Receive(&hspi1, &RX_Buffer, 2, 1000);
-
+    // uint16_t data23 = Read_8bit(Stat_Reg);
     // HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_6);
 
     /* USER CODE END WHILE */
@@ -184,39 +204,6 @@ void SystemClock_Config(void)
  * @param None
  * @retval None
  */
-static void MX_SPI1_Init(void)
-{
-
-  /* USER CODE BEGIN SPI1_Init 0 */
-
-  /* USER CODE END SPI1_Init 0 */
-
-  /* USER CODE BEGIN SPI1_Init 1 */
-
-  /* USER CODE END SPI1_Init 1 */
-  /* SPI1 parameter configuration*/
-  hspi1.Instance = SPI1;
-  hspi1.Init.Mode = SPI_MODE_MASTER;
-  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
-  hspi1.Init.CLKPolarity = SPI_POLARITY_HIGH;
-  hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
-  hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
-  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
-  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
-  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-  hspi1.Init.CRCPolynomial = 7;
-  hspi1.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
-  hspi1.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
-  if (HAL_SPI_Init(&hspi1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN SPI1_Init 2 */
-
-  /* USER CODE END SPI1_Init 2 */
-}
 
 /**
  * @brief USART2 Initialization Function
@@ -335,45 +322,6 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-uint8_t Read_16bit(uint8_t REG)
-{
-  uint8_t TX_Data = Comm_RW | (REG << 3);
-  uint8_t RX_Data = 0;
-  HAL_SPI_Transmit(&hspi1, &TX_Data, 1, 1000);
-  // HAL_Delay(1);
-  HAL_SPI_Receive(&hspi1, &RX_Data, 2, 1000);
-  // RX_Data = reverse_bytes_16(RX_Data);
-  return RX_Data;
-}
-uint8_t Read_8bit(uint8_t REG)
-{
-  uint8_t TX_Data = Comm_RW | (REG << 3);
-  uint8_t RX_Data = 0;
-  HAL_SPI_Transmit(&hspi1, &TX_Data, 1, 1000);
-  HAL_Delay(50);
-  HAL_SPI_Receive(&hspi1, &RX_Data, 1, 1000);
-  HAL_Delay(50);
-  return RX_Data;
-}
-uint8_t Read_24bit(uint8_t REG)
-{
-  uint8_t TX_Data = Comm_RW | (REG << 3);
-  uint8_t RX_Data = 0;
-  HAL_SPI_Transmit(&hspi1, &TX_Data, 1, 1000);
-  HAL_Delay(50);
-  HAL_SPI_Receive(&hspi1, &RX_Data, 3, 1000);
-  HAL_Delay(50);
-  return RX_Data;
-}
-void Write_16bit(uint8_t REG, uint16_t Data)
-{
-  uint8_t TX_Data = (REG << 3);
-  uint16_t RX_Data = reverse_bytes_16(Data);
-  HAL_SPI_Transmit(&hspi1, &TX_Data, 1, 1000);
-  HAL_Delay(50);
-  HAL_SPI_Transmit(&hspi1, &RX_Data, 2, 1000);
-  HAL_Delay(50);
-}
 #ifdef USE_FULL_ASSERT
 /**
  * @brief  Reports the name of the source file and the source line number
