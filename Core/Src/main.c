@@ -117,11 +117,11 @@ int main(void)
     }
     ReadMode();
     ReadConfiguration();
-    while (1)
-    {
-      ReadData();
-      HAL_Delay(1000);
-    }
+    // while (1)
+    // {
+    //   ReadData();
+    //   HAL_Delay(1000);
+    // }
     
     
     //CheckStatusReady();
